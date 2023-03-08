@@ -1,7 +1,12 @@
+import Nav from "./Nav";
+import Card from "./Home/Card";
+import Content from "./Home/Content";
 function App() {
   return (
-    <div className="text-3xl font-bold underline bg-black">
-      home
+    <div>
+      <Nav/>
+      {/* <Content/> */}
+      <Card/>
     </div>
   );
 }

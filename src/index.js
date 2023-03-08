@@ -10,3 +10,6 @@ root.render(
   </React.StrictMode>
 );
 
+// <div className="h-30 flex justify-center border border-black mt-10">
+        //     <p className="text-4xl">Customized as per your Specification.</p>
+        // </div>
