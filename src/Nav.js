@@ -1,12 +1,11 @@
 import logo from './assest/logo.jpg'
 const Nav = () => {
     return (
-        <nav className="h-20 w-full fixed">
+        <nav className="h-20 w-full fixed bg-white">
             <input type="checkbox" id="check" hidden/>
-            <label for="check" className="float-right text-black leading-[80px] text-3xl mr-10 lg:hidden">
+            <label htmlFor="check" className="float-right text-black leading-[80px] text-3xl mr-10 lg:hidden">
                 <i class="fas fa-bars"></i>
             </label>
-            {/* <label className="text-white leading-[80px] pl-12 md:pl-24  md:text-4xl text-3xl  ">Navigation</label> */}
             <div className="h-20  inline-flex">
                 <img src={logo} alt="logo"/>
                 </div>
@@ -16,7 +15,6 @@ const Nav = () => {
                 <li><a href="#">Products</a></li>
                 <li><a href="#">Contact</a></li>
             </ul>
-            
         </nav>
       
     );
