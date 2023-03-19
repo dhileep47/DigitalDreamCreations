@@ -9,15 +9,18 @@ const Card = () => {
       <div className="md:grid grid-cols-4">
         {Cardinfo.map(element => {
           return <div key={element.id} className="p-4">
-            <div className="flex relative">
-              <img alt="gallery" className="absolute w-full h-full object-center" src={element.img} />
-              <div className="h-60 w=60 relative border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
-                <h1 className="title-font text-lg font-medium text-gray-900 mb-3">{element.product}</h1>
-                <p className="leading-relaxed">{element.desc}</p>
+            <div className="flex relative border">
+              <img alt="gallery" className="absolute h-60 w-full  object-center" src={element.img} />
+              <div className="h-60 w-full relative border-4 border-gray-200 bg-white opacity-0 hover:opacity-100">
+                  <p className="text-xl uppercase text-center p-5 decoration-solid">{element.product}</p>
+                <p className="mx-5 p-1">{element.desc}</p>
               </div>
             </div>
           </div>
         })}
+      </div>
+      <div className="flex justify-center mt-8">
+      <button className=" bg-black hover:bg-white text-white hover:text-black border hover:border-black text-sm px-20 py-3 rounded-full">Shop Now</button>
       </div>
     </div>
   ); 

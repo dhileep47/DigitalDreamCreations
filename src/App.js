@@ -5,10 +5,10 @@ import Content from "./Home/Content";
 function App() {
   return (
     <div>
-      {/* <Nav/> */}
-      {/* <Content/> */}
+      <Nav/>
+      <Content/>
       <Card/>
-      {/* <Footer/> */}
+      <Footer/>
     </div>
   );
 }
