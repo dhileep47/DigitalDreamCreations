@@ -16,12 +16,13 @@ const Card = () => {
                 <p className="mx-5 p-1">{element.desc}</p>
               </div>
             </div>
+            <div className="flex justify-center mt-8">
+              <button className=" bg-black hover:bg-white text-white hover:text-black border hover:border-black text-sm px-10 py-3 rounded-full">Shop Now</button>
+            </div>
           </div>
         })}
       </div>
-      <div className="flex justify-center mt-8">
-      <button className=" bg-black hover:bg-white text-white hover:text-black border hover:border-black text-sm px-20 py-3 rounded-full">Shop Now</button>
-      </div>
+      
     </div>
   ); 
 }
