@@ -1,4 +1,32 @@
+import React ,{ useRef } from "react";
+import db from "./Firebase";
+import { collection,getDocs,getDoc, doc, addDoc} from "firebase/firestore";
+
+
 const Contact = () => {
+
+  const feedNameRef = useRef();
+  const feedMailRef = useRef();
+  const feedMsgRef = useRef();
+
+  const feedRef = collection(db,"Feedback");
+
+
+
+  const storeFeed = async() =>{
+    const name=feedNameRef.current.value;
+    const mail=feedMailRef.current.value;
+    const msg=feedMsgRef.current.value;
+
+    await addDoc(feedRef,{
+      Name:name,
+      Mail:mail,
+      Msg:msg
+    });
+  };
+
+
+
     return ( 
     <div>
 <section className="text-gray-600 body-font relative">
@@ -24,19 +52,19 @@ const Contact = () => {
       <p className="leading-relaxed mb-5 text-lg text-gray-600">We love hearing from you!</p>
       <div className="relative mb-4">
         <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
-        <input type="text" id="name" name="name" className="w-full bg-white rounded border border-gray-300 focus:border-black focus:ring-2 focus:ring-black text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input type="text" id="name" name="name" ref={feedNameRef} className="w-full bg-white rounded border border-gray-300 focus:border-black focus:ring-2 focus:ring-black text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       <div className="relative mb-4">
         <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-        <input type="email" id="email" name="email" className="w-full bg-white rounded border border-gray-300 focus:border-black focus:ring-2 focus:ring-black text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input type="email" id="email" name="email" ref={feedMailRef} className="w-full bg-white rounded border border-gray-300 focus:border-black focus:ring-2 focus:ring-black text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
       <div className="relative mb-4">
         <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
-        <textarea id="message" name="message" className="w-full bg-white rounded border border-gray-300 focus:border-black focus:ring-2 focus:ring-black h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+        <textarea id="message" name="message" ref={feedMsgRef} className="w-full bg-white rounded border border-gray-300 focus:border-black focus:ring-2 focus:ring-black h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
       </div>
       
       <div className="flex justify-center mt-8">
-              <button className="bg-black hover:bg-white text-white hover:text-black border hover:border-black text-lg px-20 py-4 rounded-full">Submit</button>
+              <button onClick={storeFeed} className="bg-black hover:bg-white text-white hover:text-black border hover:border-black text-lg px-20 py-4 rounded-full">Submit</button>
             </div>
     </div>
   </div>
