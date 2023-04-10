@@ -1,6 +1,7 @@
 import React ,{ useRef } from "react";
 import db from "./Firebase";
-import { collection,getDocs,getDoc, doc, addDoc} from "firebase/firestore";
+import { collection, getDocs,getDoc, doc, addDoc} from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 
 
 const Contact = () => {
@@ -11,7 +12,7 @@ const Contact = () => {
 
   const feedRef = collection(db,"Feedback");
 
-
+  const navigate = useNavigate();
 
   const storeFeed = async() =>{
     const name=feedNameRef.current.value;
@@ -23,6 +24,8 @@ const Contact = () => {
       Mail:mail,
       Msg:msg
     });
+    alert("sent successfully");
+    navigate("/contact");
   };
 
 
@@ -50,10 +53,13 @@ const Contact = () => {
     <div className="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
       <h2 className="text-gray-900 text-4xl mb-1 font-medium title-font">Feedback</h2>
       <p className="leading-relaxed mb-5 text-lg text-gray-600">We love hearing from you!</p>
+    
+      
       <div className="relative mb-4">
         <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
         <input type="text" id="name" name="name" ref={feedNameRef} className="w-full bg-white rounded border border-gray-300 focus:border-black focus:ring-2 focus:ring-black text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
       </div>
+      
       <div className="relative mb-4">
         <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
         <input type="email" id="email" name="email" ref={feedMailRef} className="w-full bg-white rounded border border-gray-300 focus:border-black focus:ring-2 focus:ring-black text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
@@ -64,8 +70,10 @@ const Contact = () => {
       </div>
       
       <div className="flex justify-center mt-8">
-              <button onClick={storeFeed} className="bg-black hover:bg-white text-white hover:text-black border hover:border-black text-lg px-20 py-4 rounded-full">Submit</button>
+              <button onClick={storeFeed} type="submit" className="bg-black hover:bg-white text-white hover:text-black border hover:border-black text-lg px-20 py-4 rounded-full">Submit</button>
             </div>
+           
+          
     </div>
   </div>
 </section>
