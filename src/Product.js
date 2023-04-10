@@ -1,6 +1,7 @@
 import img1 from "./assest/gal3.avif"
 import 'firebase/firestore';
 import db from "./Firebase";
+import { Link } from "react-router-dom";
 
 import React, {useState,useEffect} from "react";
 import { collection, doc,getDocs } from "firebase/firestore";
@@ -29,7 +30,9 @@ const Product = () => {
                       <h5 className="text-xl font-semibold  text-gray-900 dark:text-white">{element.pname}</h5>
                   <div className="flex justify-between mt-8">
                       <p className="text-3xl font-bold text-gray-900 dark:text-white">{element.price}</p>
-                      <a href="b" className="bg-black hover:bg-white text-white hover:text-black border hover:border-black px-5 py-1 rounded-full">Buy Now</a>
+                      <Link to={'/buynow'}>
+                      <button  className="bg-black hover:bg-white text-white hover:text-black border hover:border-black px-5 py-1 rounded-full">Buy Now</button>
+                      </Link>
                   </div>
               </div>
         </div>
