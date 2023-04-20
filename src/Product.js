@@ -39,10 +39,7 @@ const Product = () => {
 
         ))
         }
-        
-        
-
-
+           
     </div>
   </div>
 

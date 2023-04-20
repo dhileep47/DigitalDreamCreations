@@ -1,4 +1,6 @@
-import React,{useState} from "react";
+import React,{useState,useRef} from "react";
+import { collection, getDocs,getDoc, doc, addDoc} from "firebase/firestore";
+import db from "./Firebase";
 
 const Buynow = () => {
     const [showhide,setShowhide]=useState(''); 
@@ -9,6 +11,8 @@ const Buynow = () => {
         setShowhide(getuser);
     }
 
+    
+
 
     return ( 
    <div className="w-full">
@@ -17,7 +21,7 @@ const Buynow = () => {
        <form action="">
          <div className="mb-5">
            <label htmlFor="name" className="block mb-2 font-bold text-gray-600">Name</label>
-           <input type="text" id="name" name="name" className="border border-gray-300 shadow p-3 w-full rounded mb-"/>
+           <input type="text" id="name" name="name"  className="border border-gray-300 shadow p-3 w-full rounded mb-"/>
          </div>
          <div className="mb-5">
            <label htmlFor="email" className="block mb-2 font-bold text-gray-600">Email</label>
@@ -29,7 +33,7 @@ const Buynow = () => {
          </div>
          <div className="mb-5">
            <label htmlFor="address" className="block mb-2 font-bold text-gray-600">Address</label>
-           <textarea type="text" id="address" name="address" className="border border-gray-300 shadow p-3 w-full rounded mb-"/>
+           <textarea type="text" id="address" name="address"   className="border border-gray-300 shadow p-3 w-full rounded mb-"/>
          </div>
          <div className="mb-5">
            <label htmlFor="products" className="block mb-2 font-bold text-gray-600">Choose your product</label>
@@ -45,6 +49,10 @@ const Buynow = () => {
                   
                  </select>
                     </div> 
+                    <div className="mb-5">
+                      <p>Upload here</p>
+                      <input type="file" /> 
+                    </div>
 
      {
         showhide==='1' &&(
@@ -79,11 +87,12 @@ const Buynow = () => {
                      
         )
      }
-         <button className="text-lg w-full bg-black hover:bg-white text-white hover:text-black border hover:border-black  py-4 rounded-full">Buy now</button>
+         <button className="text-lg w-full bg-black hover:bg-white text-white hover:text-black border hover:border-black  py-2 px-3 rounded-full">Buy now</button>
        </form>
      </div>
    </div>
      );
 }
- 
+
+
 export default Buynow;
