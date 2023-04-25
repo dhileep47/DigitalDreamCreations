@@ -1,10 +1,10 @@
-import img1 from "./assest/gal3.avif"
+// import img1 from "./assest/gal3.avif"
 import 'firebase/firestore';
 import db from "./Firebase";
 import { Link } from "react-router-dom";
 
 import React, {useState,useEffect} from "react";
-import { collection, doc,getDocs } from "firebase/firestore";
+import { collection,getDocs } from "firebase/firestore";
  
 
 const Product = () => {
@@ -25,7 +25,7 @@ const Product = () => {
     <div className="lg:grid grid-cols-4">
         {data && data.map((element)=>(
             <div  key={element.id} className="h-80 w-80 mb-8 max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-            <img className="p-4 h-52 w-full"src={img1} alt="pim" />
+            <img className="p-4 h-52 w-full"src={element.img} alt="pim" />
               <div className="px-4">
                       <h5 className="text-xl font-semibold  text-gray-900 dark:text-white">{element.pname}</h5>
                   <div className="flex justify-between mt-8">
