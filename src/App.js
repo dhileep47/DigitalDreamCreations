@@ -9,8 +9,10 @@ import Buynow from "./Buynow";
 import {BrowserRouter,Route,Routes} from "react-router-dom";
 import { useState } from "react";
 
+
 function App() {
-  const [isdata,setData]=useState("")
+  
+  const [isdata,setData]=useState("") 
 
   const updatedata=(da)=>{
     console.log(da);

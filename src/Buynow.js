@@ -1,29 +1,45 @@
-import React,{useRef} from "react";
+import React,{useRef, useState} from "react";
 import { collection,  addDoc} from "firebase/firestore";
 import db from "./Firebase";
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
+import { useNavigate } from "react-router-dom";
+import {ref,uploadBytes ,getDownloadURL} from "firebase/storage";
+import { storage } from "./Firebase";
+import 'firebase/firestore';
 
 toast.configure()
 
 const Buynow = (props) => {
+  const [iupload ,setIupload]=useState();
+
+  const uploadFile =()=>{
+    if(!iupload) return;
+    const iRef = ref(storage,`formuploads/${iupload.name}`);
+    uploadBytes(iRef,iupload).then((snapshot)=>{
+      getDownloadURL(snapshot.ref).then((url)=>{
+        console.log(url);
+      })
+    })
+  }
+
+  const navi=useNavigate();
   const {items}=props
-    const ordNameRef = useRef();
+    
+  const ordNameRef = useRef();
     const ordMailRef = useRef();
     const ordPhnRef = useRef();
     const ordAddRef = useRef();
 
+
     const ordRef = collection(db,"Orders");
 
     const Addorder = async(e)=>{
-
-
       const name=ordNameRef.current.value;
       const mail=ordMailRef.current.value;
       const phn=ordPhnRef.current.value;
       const add=ordAddRef.current.value;
       const pro=items;
-
 
       e.preventDefault();
       toast.success("Order placed Successfullyy!");
@@ -33,17 +49,27 @@ const Buynow = (props) => {
         Mail:mail,
         Phn:phn,
         Address:add,
-        Product:pro
+        Product:pro,
     
       });
       console.log(name,pro);
 
 
     }
+    const BackOrder=()=>{
+      
+      navi("/product")
+    }
 
     return ( 
-   <div className="w-full">
+   <div  className="w-full">
      <h2 className="text-center font-bold text-2xl uppercase mb-10">Fill to capture your memories!</h2>
+      
+    <button
+     className=" ml-10 material-symbols-outlined cursor-pointer " onClick={BackOrder}>arrow_back
+    </button>
+     
+    
      <div className="bg-white p-10 rounded-lg shadow md:w-3/4 mx-auto lg:w-1/2">
        <form onSubmit={Addorder}>
          <div className="mb-5">
@@ -71,8 +97,13 @@ const Buynow = (props) => {
                     </div>
                     {items!=='Wedding events'&&(
                     <div className="mb-5">
-                      <p>Upload here</p>
-                      <input type="file" required/> 
+                      <p >Upload here</p>
+                      <input  type="file" 
+                      onChange={(e)=>{
+                        setIupload(e.target.files[0]);
+                      }}
+                      
+                      required/> 
                     </div>
                     )} 
      {
@@ -116,7 +147,7 @@ const Buynow = (props) => {
         </div>       
         )
      }
-         <button className="text-lg w-full bg-black hover:bg-white text-white hover:text-black border hover:border-black  py-2 px-3 rounded-full">Buy now</button>
+         <button className="text-lg w-full bg-black hover:bg-white text-white hover:text-black border hover:border-black  py-2 px-3 rounded-full" onClick={uploadFile}>Buy now</button>
        </form>
      </div>
    </div>
