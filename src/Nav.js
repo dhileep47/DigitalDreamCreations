@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import logo from './assest/logo.jpg'
+import Tada from 'react-reveal/Tada';
 const Nav = () => {
     return (
         <nav className="w-full z-10  fixed bg-white ">
@@ -10,12 +11,18 @@ const Nav = () => {
             <div className="h-20  inline-flex">
                 <img src={logo} alt="logo"/>
                 </div>
+            
+
             <ul className="float-right mr-10 lg:flex leading-[80px] space-x-4 text-black uppercase rounded fixed lg:relative h-[100vh] lg:h-0 w-[100%] lg:w-fit top-20 lg:top-0 left-[-100%] lg:left-0 transition-all duration-300 lg:transition-none text-center bg-white">
-                <li><Link to="/">Home</Link></li>
+                
+                <Tada>
+                    <li><Link to="/">Home</Link></li>
+                </Tada>                    
                 <li><Link to="/product">Products</Link></li>
                 <li><Link to="/about">About Us</Link></li>
                 <li><Link to="/contact">Contact</Link></li>
             </ul>
+               
         </nav>      
     );
 }

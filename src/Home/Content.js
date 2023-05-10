@@ -7,6 +7,7 @@ import frames from "../Home/../assest/frames.jpg";
 import fsize from "../Home/../assest/Fsize.jpg";
 import pillow from "../Home/../assest/pillow.jpg";
 import { Autoplay } from "swiper";
+import Bounce from 'react-reveal/Zoom';
 
 const Content = () => {
     return ( 
@@ -15,11 +16,13 @@ const Content = () => {
           <p className="p-2 md:text-6xl font-bold animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent text-4xl">Digital</p>
           <p className="p-2 md:text-6xl font-bold animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent text-4xl">Dream</p>
           <p className="p-2 md:text-6xl font-bold animate-text bg-gradient-to-r from-teal-500 via-purple-500 to-orange-500 bg-clip-text text-transparent text-4xl">Creations</p>
-        
+        <Bounce>
+
         <div className="">
           <p  className="px-2 my-3 text-3xl "> Frame every moment.</p>
           </div> 
           
+        </Bounce>
         </div>
         <div
           className=" h-auto  w-4/6 mt-40 md:h-2/3 md:w-1/3 m-0 md:-ml-32">

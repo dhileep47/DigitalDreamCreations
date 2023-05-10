@@ -2,6 +2,8 @@ import React ,{ useRef } from "react";
 import db from "./Firebase";
 import { collection,addDoc} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
+import Pulse from 'react-reveal/Pulse';
+
 
 
 const Contact = () => {
@@ -52,7 +54,10 @@ const Contact = () => {
     </div>
     <div className="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
       <h2 className="text-gray-900 text-4xl mb-1 font-medium title-font">Feedback</h2>
+      <Pulse>
+
       <p className="leading-relaxed mb-5 text-lg text-gray-600">We love hearing from you!</p>
+      </Pulse>
       <form onSubmit={storeFeed}>
       
       <div className="relative mb-4">

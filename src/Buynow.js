@@ -12,12 +12,14 @@ toast.configure()
 
 const Buynow = (props) => {
   const [iupload ,setIupload]=useState();
+  const [iurl ,setiurl]=useState();
 
   const uploadFile =()=>{
     if(!iupload) return;
     const iRef = ref(storage,`formuploads/${iupload.name}`);
     uploadBytes(iRef,iupload).then((snapshot)=>{
       getDownloadURL(snapshot.ref).then((url)=>{
+        setiurl(url);
         console.log(url);
       })
     })
@@ -40,6 +42,8 @@ const Buynow = (props) => {
       const phn=ordPhnRef.current.value;
       const add=ordAddRef.current.value;
       const pro=items;
+      const link=iurl;
+      console.log(iurl);
 
       e.preventDefault();
       toast.success("Order placed Successfullyy!");
@@ -50,11 +54,10 @@ const Buynow = (props) => {
         Phn:phn,
         Address:add,
         Product:pro,
+        ImageLink:link
     
       });
       console.log(name,pro);
-
-
     }
     const BackOrder=()=>{
       
@@ -106,7 +109,7 @@ const Buynow = (props) => {
                       required/> 
                     </div>
                     )} 
-     {
+     {/* {
         items==='Photo Frames' &&(
             <div className="mb-8">
             <label htmlFor="products" className="block mb-2 font-bold text-gray-600">Select frame size</label>
@@ -138,15 +141,15 @@ const Buynow = (props) => {
                      </div> 
                      
         )
-     }
-     {
+     } */}
+     {/* {
         items==='Wedding Events' &&(
           <div className="mb-5">
           <label htmlFor="address" className="block mb-2 font-bold text-gray-600">Event Location</label>
           <textarea type="text" id="address" name="address"   className="border border-gray-300 shadow p-3 w-full rounded mb-" required/>
         </div>       
         )
-     }
+     } */}
          <button className="text-lg w-full bg-black hover:bg-white text-white hover:text-black border hover:border-black  py-2 px-3 rounded-full" onClick={uploadFile}>Buy now</button>
        </form>
      </div>
