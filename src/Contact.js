@@ -1,6 +1,6 @@
 import React ,{ useRef } from "react";
 import db from "./Firebase";
-import { collection, getDocs,getDoc, doc, addDoc} from "firebase/firestore";
+import { collection,addDoc} from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
 
@@ -53,25 +53,27 @@ const Contact = () => {
     <div className="lg:w-1/3 md:w-1/2 bg-white flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0">
       <h2 className="text-gray-900 text-4xl mb-1 font-medium title-font">Feedback</h2>
       <p className="leading-relaxed mb-5 text-lg text-gray-600">We love hearing from you!</p>
-    
+      <form onSubmit={storeFeed}>
       
       <div className="relative mb-4">
         <label htmlFor="name" className="leading-7 text-sm text-gray-600">Name</label>
-        <input type="text" id="name" name="name" ref={feedNameRef} className="w-full bg-white rounded border border-gray-300 focus:border-black focus:ring-2 focus:ring-black text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input type="text" id="name" name="name" ref={feedNameRef} className="w-full bg-white rounded border border-gray-300 focus:border-black focus:ring-2 focus:ring-black text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
       </div>
       
       <div className="relative mb-4">
         <label htmlFor="email" className="leading-7 text-sm text-gray-600">Email</label>
-        <input type="email" id="email" name="email" ref={feedMailRef} className="w-full bg-white rounded border border-gray-300 focus:border-black focus:ring-2 focus:ring-black text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+        <input type="email" id="email" name="email" ref={feedMailRef} className="w-full bg-white rounded border border-gray-300 focus:border-black focus:ring-2 focus:ring-black text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out" required/>
       </div>
       <div className="relative mb-4">
         <label htmlFor="message" className="leading-7 text-sm text-gray-600">Message</label>
-        <textarea id="message" name="message" ref={feedMsgRef} className="w-full bg-white rounded border border-gray-300 focus:border-black focus:ring-2 focus:ring-black h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
+        <textarea id="message" name="message" ref={feedMsgRef} className="w-full bg-white rounded border border-gray-300 focus:border-black focus:ring-2 focus:ring-black h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out" required></textarea>
       </div>
       
       <div className="flex justify-center mt-8">
-              <button onClick={storeFeed} type="submit" className="bg-black hover:bg-white text-white hover:text-black border hover:border-black text-lg px-20 py-4 rounded-full">Submit</button>
+              <button  type="submit" className="bg-black hover:bg-white text-white hover:text-black border hover:border-black text-lg px-20 py-4 rounded-full">Submit</button>
             </div>
+            
+</form>
            
           
     </div>

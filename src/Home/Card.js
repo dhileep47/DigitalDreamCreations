@@ -1,7 +1,14 @@
+
 import { Cardinfo } from "../Data/Cardinfo";
+import { useNavigate } from "react-router-dom";
+
 const Card = () => {
+  const navigate = useNavigate();
+  const nav =()=>{
+    navigate('/product');
+  }
   return (
-    <div className="container px-5 py-24 mx-auto">
+    <div className="container px-5 py-14 mx-auto">
       <div className="flex flex-col text-center w-full mb-20">
         <h1 className="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">Choose your own product</h1>
         <p className="lg:w-2/3 mx-auto leading-relaxed text-base">Pick from our available products Customized Cup with photo,Magic cup with photo,Magic mirror with photo,Pillow with photo,Keychain with photo and Photo frames</p>
@@ -20,7 +27,7 @@ const Card = () => {
         })}
       </div>
             <div className="flex justify-center mt-8">
-              <button className="bg-black hover:bg-white text-white hover:text-black border hover:border-black text-lg px-20 py-4 rounded-full">Shop Now</button>
+              <button className="bg-black hover:bg-white text-white hover:text-black border hover:border-black text-lg px-20 py-4 rounded-full" onClick={nav}>Shop Now</button>
             </div>
       
     </div>
