@@ -20,50 +20,31 @@ function App() {
   return (
     <div>
       <BrowserRouter>
+        <Nav />
         <Routes>
           <Route
             path="/"
-            element={
-              <>
-                <Nav />
-                <Home /> <Footer />
-              </>
-            }
-          ></Route>
+            element={<Home />}
+          />
           <Route
             path="/product"
-            element={
-              <>
-                <Nav />
-                <Product updatedata={updatedata} />
-                <Footer />
-              </>
-            }
-          ></Route>
+            element={<Product updatedata={updatedata} />}
+          />
           <Route
             path="/contact"
-            element={
-              <>
-                <Nav />
-                <Contact />
-                <Footer />
-              </>
-            }
-          ></Route>
+            element={<Contact />}
+          />
           <Route
             path="/about"
-            element={
-              <>
-                <Nav />
-                <About />
-                <Footer />
-              </>
-            }
-          ></Route>
-          <Route path="/buynow" element={<Buynow items={isdata} />}></Route>
+            element={<About />}
+          />
+          <Route
+            path="/buynow"
+            element={<Buynow items={isdata} />}
+          />
         </Routes>
+        <Footer />
       </BrowserRouter>
-      {/* <Buynow/> */}
     </div>
   );
 }
