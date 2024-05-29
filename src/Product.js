@@ -16,7 +16,7 @@ const Product = (props) => {
       setData(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     getAll();
-  }, []);
+  }, [pro]);
 
   const buy = (e) => {
     updatedata(e.target.value);
