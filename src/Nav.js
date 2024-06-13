@@ -10,11 +10,12 @@ const Nav = () => {
       >
         <i className="fas fa-bars"></i>
       </label>
-      <div className="h-20  inline-flex">
+      
+      <div className="h-14 md:h-20 flex">
         <img src={logo} alt="logo" />
       </div>
 
-      <ul className="float-right mr-10 lg:flex leading-[80px] space-x-4 text-black uppercase rounded fixed lg:relative h-[100vh] lg:h-0 w-[100%] lg:w-fit top-20 lg:top-0 left-[-100%] lg:left-0 transition-all duration-300 lg:transition-none text-center bg-white">
+      <ul className="float-right mr-10 lg:flex leading-[70px] space-x-4 text-black uppercase rounded fixed lg:relative h-[100vh] lg:h-0 w-[100%] lg:w-fit top-15 lg:top-0 left-[-100%] lg:left-0 transition-all duration-300 lg:transition-none text-center bg-white z-10">
         <li>
           <Link to="/">Home</Link>
         </li>
